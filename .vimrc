@@ -19,11 +19,15 @@ set tabstop=4
 set shiftwidth=4
 set smartindent
 
+" Trailing whitespace
+au BufWrite * :%s/\s\+$//e
+
 " Searching
 set hlsearch
+set ignorecase
 set incsearch
 
 " Misc
 syntax on
 set number
-
+set autoread
