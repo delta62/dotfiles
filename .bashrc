@@ -20,12 +20,23 @@ PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[0
 alias ls="ls -l -G"
 alias grep="grep -i --color"
 
-# Git aliases
-alias gb="git branch"
-alias gs="git status"
-alias gc="git commit"
-alias gp="git push"
-alias gpl="git pull"
-alias ga="git add"
-alias gl="git log"
-alias gd="git diff"
+# Git
+source ~/.git-completion.sh
+
+d62_git_alias() {
+    alias $2="$1"
+    if [ $3 ]
+    then
+        echo "__git_complete $2 $3"
+        __git_complete $2 $3
+    fi
+}
+d62_git_alias "git branch" gb    _git_branch 
+d62_git_alias "git status" gs   
+d62_git_alias "git commit" gc    _git_commit 
+d62_git_alias "git push"   gp    _git_push 
+d62_git_alias "git pull"   gpl   _git_pull 
+d62_git_alias "git add"    ga    _git_add
+d62_git_alias "git log"    gl    _git_log
+d62_git_alias "git diff"   gd    _git_diff
+d62_git_alias "git checkout" gco _git_checkout
