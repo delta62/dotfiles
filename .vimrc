@@ -32,3 +32,8 @@ set incsearch
 syntax on
 set number
 set autoread
+
+" Searching & Buffers
+set path+=**
+nnoremap <C-b> :buffers<CR>:buffer<Space>
+set hidden
