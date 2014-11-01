@@ -35,5 +35,7 @@ set autoread
 
 " Searching & Buffers
 set path+=**
-nnoremap <C-b> :buffers<CR>:buffer<Space>
 set hidden
+nnoremap <C-b> :buffers<CR>:buffer<Space>
+nnoremap <C-l> :cnext<CR>
+nnoremap <C-k> :cprev<CR>
