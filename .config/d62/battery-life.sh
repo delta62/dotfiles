@@ -54,7 +54,7 @@ print_cord() {
             COLOR_END=1
             echo -en "$COLOR_GRAY"
         fi
-        echo -n "-"
+        echo -n "~"
     done
 }
 
