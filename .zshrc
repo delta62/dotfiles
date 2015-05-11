@@ -16,3 +16,5 @@ alias grep='grep -i --color'
 
 export PS1=$'\e[0;32m%n\e[0m \e[1;34m%~\e[0m \e[1;32m$ \e[0m'
 export RPS1=$'[ %* ]'
+export GEM_HOME="$HOME/.gem/ruby/2.2.0"
+export PATH="$GEM_HOME/bin:$PATH"
