@@ -11,7 +11,8 @@ man() {
 }
 
 # Add homebrew to path
-export PATH="/usr/local/bin:$PATH"
+# export PATH="/usr/local/bin:$PATH"
+export PATH="${HOME}/.npm-packages/bin:$PATH"
 
 # Environment variables
 PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[0m\]'
@@ -19,6 +20,7 @@ PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[0
 # General aliases
 alias ls="ls -l -G"
 alias grep="grep -i --color"
+alias :q="exit"
 
 # Git
 source ~/.git-completion.sh

@@ -25,9 +25,10 @@ set smartindent
 " Filetype-specific
 au FileType javascript setlocal sw=2 ts=2 sts=2
 au FileType ruby setlocal sw=2 ts=2 sts=2
+au FileType css setlocal sw=2 ts=2 sts=2
 
 " Trailing whitespace
-au BufWrite * :%s/\s\+$//e
+" au BufWrite * :%s/\s\+$//e
 
 " Searching & Buffers
 set hlsearch
@@ -41,6 +42,7 @@ nnoremap <C-k> :cprev<CR>
 
 " Misc
 syntax on
+set ruler
 set number
 set autoread
 nnoremap <S-Enter> O<Esc>j
