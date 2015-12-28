@@ -22,7 +22,7 @@ man() {
 export PATH="${HOME}/.npm-packages/bin:$PATH"
 
 # Aliases
-alias ls="ls -lAhG"
+alias ls="ls -lhG --group-directories-first"
 alias :fin="find"
 alias :q="exit"
 
