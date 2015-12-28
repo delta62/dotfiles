@@ -1,8 +1,5 @@
-# Feature Detection
-OS=win32
-[[ `expr $(uname) : Darwin 2>/dev/null` -gt 0 ]] && OS=osx
-. "$HOME/.config/d62/bash/$OS.sh"
-. "$HOME/.config/d62/bash/git.sh"
+# Vi mode
+set -o vi
 
 # Colors
 export CLICOLOR=1
