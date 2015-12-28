@@ -15,6 +15,9 @@ call vundle#end()
 filetype plugin indent on
 " end Vundle configuration
 
+" w!! == sudo :w
+cmap w!! w !sudo tee > /dev/null %
+
 " Indentation
 set expandtab
 set tabstop=4
