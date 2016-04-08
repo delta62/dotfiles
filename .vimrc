@@ -5,19 +5,24 @@ set rtp +=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " Vundle plugins
-Plugin 'elzr/vim-json'
 Plugin 'gmarik/Vundle.vim'
-Plugin 'groenewege/vim-less'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'junegunn/fzf'
+Plugin 'sheerun/vim-polyglot'
 Plugin 'mattn/emmet-vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'junegunn/fzf'
+Plugin 'JulesWang/css.vim'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Quramy/tsuquyomi'
+Plugin 'elzr/vim-json'
+Plugin 'jiangmiao/auto-pairs'
 
 call vundle#end()
 filetype plugin indent on
 " end Vundle configuration
+
+" vimproc
+set rtp+=~/.vim/manual/vimproc.vim
 
 " powerline
 set encoding=utf-8
@@ -46,36 +51,28 @@ nnoremap <silent> <C-b> :call fzf#run({
 \   'down':     len(<sid>buflist()) + 2
 \ })<CR>
 
-" w!! == sudo :w
-cmap w!! w !sudo tee > /dev/null %
+" Tsuquyomi
+nnoremap <F2> :TsuquyomiRenameSymbol<CR>
 
 " Indentation
 set expandtab
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set shiftround
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set smartindent
 set formatoptions-=cro
-
-" Filetype-specific
-au FileType javascript setlocal sw=2 ts=2 sts=2
-au FileType ruby setlocal sw=2 ts=2 sts=2
-au FileType css setlocal sw=2 ts=2 sts=2
 
 " Trailing whitespace
 au BufWrite * :%s/\s\+$//e
 
-" Searching & Buffers
-set path=,,src/**,lib/**,test/**,spec/**,include/**
+" Searching
+set path=,,src/**,lib/**,test/**,spec/**
 set hlsearch
 set incsearch
-set hidden
 
 " Display hidden characters
 set list
 set listchars=nbsp:¬,tab:»·
-
 
 " Misc
 syntax on
@@ -86,11 +83,9 @@ set clipboard=unnamed
 set matchpairs+=<:>
 set scrolloff=5
 
-"""""""Key Mappings""""""""""
-" Super enter
-nnoremap <CR> o<Esc>k
-" Prevent accidental helps
-inoremap <F1> <Esc>
+" set cursorline
+" hi CursorLine cterm=NONE ctermbg=darkgrey
+
 " l2vim
 nnoremap <up> <nop>
 nnoremap <down> <nop>
@@ -100,14 +95,30 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
-"""""""""""""""""""""""""""""
+
+" Searching & Buffers
+set hidden
+nnoremap <Tab> :bn<CR>
+nnoremap <S-Tab> :bp<CR>
+
+inoremap <F1> <Esc>
+
+" Super Enter!
+nnoremap <Return> o<Esc>k
 
 " Color column
 highlight ColorColumn ctermbg=8
-au BufEnter * setlocal textwidth=80 colorcolumn=+1
 
-" TypeScript
-au BufEnter *.ts setlocal textwidth=140 colorcolumn=+1 tabstop=4 shiftwidth=4 softtabstop=4
+" Filetype associations
+au BufEnter *.ts setlocal filetype=typescript
+au BufEnter *.ts setlocal textwidth=140
+au BufEnter *.ts setlocal colorcolumn=+1
 
-" HTML
-au BufEnter *.html setlocal textwidth=0 coloccolumn= tabstop=4 shiftwidth=4 softtabstop=4
+au BufEnter *.html setlocal textwidth=0
+au BufEnter *.html setlocal colorcolumn=
+
+au BufEnter *.rb setlocal shiftwidth=2
+au BufEnter *.rb setlocal tabstop=2
+au BufEnter *.rb setlocal softtabstop=2
+
+let g:polyglot_disabled = ['json']
