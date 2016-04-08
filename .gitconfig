@@ -1,9 +1,9 @@
 [user]
-	name = Sam Noedel
-	email = sam.noedel@gmail.com
+    name = Sam Noedel
+    email = sam.noedel@gmail.com
 [color]
-	ui = true
+    ui = true
 [push]
-	default = current
+    default = current
 [core]
-	editor = vim
+    editor = vim

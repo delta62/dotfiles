@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+# List all currently installed homebrew packages
+#
+
+brew list | awk '
+BEGIN {
+    OFS="\n"
+}
+{
+    print
+}
+'

@@ -1,0 +1,47 @@
+#!/bin/bash
+#
+# Clean Git branches
+#
+# Prerequisites:
+# - GNU grep
+# - git
+#
+# Trashes anything that matches branch story numbers. Use -f if you want to
+# delete branches that haven't been merged yet. Note that the branch you are
+# currently on will never be deleted.
+#
+# TODO:
+# Unmerged branches can be found before anything is attempted with:
+#   git branch --no-merged origin/master
+#
+
+set -e
+
+BRANCH_DELETE_MODE='-d'
+while getopts ':f' OPTION; do
+    case $OPTION in
+        f)
+            BRANCH_DELETE_MODE='-D'
+            ;;
+        \?)
+            echo "Invalid option: ${OPTARG}" >&2
+            exit 1
+            ;;
+    esac
+done
+
+BRANCHES=$(git branch | grep -E '^\s*[0-9]+-')
+
+echo "The following branches will be deleted:"
+echo "${BRANCHES}"
+echo -n "Do you want to continue? (y/N) "
+read SHOULD_CONTINUE
+
+if [[ "${SHOULD_CONTINUE}" != "y" ]]; then
+    echo "Aborted."
+    exit 2
+fi
+
+echo "${BRANCHES}" | while read BRANCH; do
+    git branch "${BRANCH_DELETE_MODE}" "${BRANCH}"
+done
