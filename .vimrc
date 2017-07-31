@@ -11,54 +11,30 @@ Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 Plugin 'JulesWang/css.vim'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Quramy/tsuquyomi'
 Plugin 'elzr/vim-json'
-Plugin 'jiangmiao/auto-pairs'
 
 call vundle#end()
 filetype plugin indent on
 " end Vundle configuration
 
-" vimproc
-set rtp+=~/.vim/manual/vimproc.vim
-
 " powerline
 set encoding=utf-8
 set laststatus=2
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
 
 " Fuzzy finder
-nnoremap <C-f> :FZF<Space>src/<CR>
-function! s:buflist()
-    redir => ls
-    silent ls
-    redir END
-    return split(ls, '\n')
-endfunction
-
-function! s:bufopen(e)
-    execute 'buffer' matchstr(a:e, '^[ 0-9]*')
-endfunction
-
-nnoremap <silent> <C-b> :call fzf#run({
-\   'source':   reverse(<sid>buflist()),
-\   'sink':     function('<sid>bufopen'),
-\   'options':  '+m -i',
-\   'down':     len(<sid>buflist()) + 2
-\ })<CR>
-
-" Tsuquyomi
-nnoremap <F2> :TsuquyomiRenameSymbol<CR>
+nnoremap <C-f> :GitFiles -oc<CR>
+nnoremap <C-b> :Buffers<CR>
 
 " Indentation
 set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set smartindent
 set formatoptions-=cro
 
@@ -66,7 +42,6 @@ set formatoptions-=cro
 au BufWrite * :%s/\s\+$//e
 
 " Searching
-set path=,,src/**,lib/**,test/**,spec/**
 set hlsearch
 set incsearch
 
@@ -76,6 +51,7 @@ set listchars=nbsp:¬,tab:»·
 
 " Misc
 syntax on
+set nowrap
 set ruler
 set number
 set autoread
@@ -95,6 +71,9 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
+
+" Clear search highlighting when entering insert mode
+au InsertEnter * :nohl
 
 " Searching & Buffers
 set hidden
@@ -120,5 +99,10 @@ au BufEnter *.html setlocal colorcolumn=
 au BufEnter *.rb setlocal shiftwidth=2
 au BufEnter *.rb setlocal tabstop=2
 au BufEnter *.rb setlocal softtabstop=2
+
+au BufEnter *.c setlocal sw=8 ts=8 sts=8 noet nolist
+au BufEnter *.h setlocal sw=8 ts=8 sts=8 noet nolist
+au BufEnter *.re setlocal sw=8 ts=8 sts=8 noet nolist syn=c
+au BufEnter Makefile setlocal sw=8 ts=8 sts=8 noet nolist
 
 let g:polyglot_disabled = ['json']
