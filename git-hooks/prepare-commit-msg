@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Do nothing if there is already a ticket number in the commit message
+if [[ $(head -n 1 $1) =~ '[HUTV' ]]; then
+  exit 0
+fi
+
+# Prepend a ticket number if the ticket can be determined from the branch name
+BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+REGEX='HUTV-[0-9]+'
+if [[ $BRANCH_NAME =~ $REGEX ]]; then
+  TASK_NUM="${BASH_REMATCH[0]}"
+  sed -i '' "1s/^/\\[$TASK_NUM\\] /" "$1"
+fi
