@@ -10,10 +10,13 @@ Plugin 'sheerun/vim-polyglot'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'Quramy/tsuquyomi'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'JulesWang/css.vim'
 Plugin 'elzr/vim-json'
+Plugin 'chooh/brightscript.vim'
+Plugin 'tpope/vim-fugitive'
 
 call vundle#end()
 filetype plugin indent on
@@ -27,14 +30,15 @@ python3 powerline_setup()
 python3 del powerline_setup
 
 " Fuzzy finder
-nnoremap <C-f> :GitFiles -oc<CR>
+nnoremap <C-p> :GitFiles -oc --exclude-standard<CR>
+nnoremap <C-t> :GitFiles -oc --exclude-standard<CR>
 nnoremap <C-b> :Buffers<CR>
 
 " Indentation
 set expandtab
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set smartindent
 set formatoptions-=cro
 
@@ -44,6 +48,8 @@ au BufWrite * :%s/\s\+$//e
 " Searching
 set hlsearch
 set incsearch
+set ignorecase
+set smartcase
 
 " Display hidden characters
 set list
@@ -55,9 +61,9 @@ set nowrap
 set ruler
 set number
 set autoread
-set clipboard=unnamed
+set clipboard=unnamedplus
 set matchpairs+=<:>
-set scrolloff=5
+set scrolloff=3
 
 " set cursorline
 " hi CursorLine cterm=NONE ctermbg=darkgrey
@@ -79,6 +85,7 @@ au InsertEnter * :nohl
 set hidden
 nnoremap <Tab> :bn<CR>
 nnoremap <S-Tab> :bp<CR>
+inoremap <C-b> <Esc><C-b>
 
 inoremap <F1> <Esc>
 
@@ -88,21 +95,24 @@ nnoremap <Return> o<Esc>k
 " Color column
 highlight ColorColumn ctermbg=8
 
-" Filetype associations
-au BufEnter *.ts setlocal filetype=typescript
-au BufEnter *.ts setlocal textwidth=140
-au BufEnter *.ts setlocal colorcolumn=+1
+" Wrap text in the quickix window
+augroup quickfix
+    autocmd!
+    autocmd FileType qf set nobuflisted
+    autocmd FileType qf setlocal wrap
+augroup END
 
+" Close quickfix when the current buffer is closed
+" au BufUnload % ccl
+" au BufUnload % lcl
+
+" Filetype associations
+au BufEnter *.ts setlocal textwidth=120
+au BufEnter *.ts setlocal colorcolumn=+1
+au BufEnter *.ts nnoremap gd :TsuDefinition<CR>
+au BufEnter *.ts nnoremap F2 :TsuRenameSymbol<CR>
 au BufEnter *.html setlocal textwidth=0
 au BufEnter *.html setlocal colorcolumn=
-
-au BufEnter *.rb setlocal shiftwidth=2
-au BufEnter *.rb setlocal tabstop=2
-au BufEnter *.rb setlocal softtabstop=2
-
-au BufEnter *.c setlocal sw=8 ts=8 sts=8 noet nolist
-au BufEnter *.h setlocal sw=8 ts=8 sts=8 noet nolist
-au BufEnter *.re setlocal sw=8 ts=8 sts=8 noet nolist syn=c
-au BufEnter Makefile setlocal sw=8 ts=8 sts=8 noet nolist
+au BufEnter *.underscore setlocal syntax=html
 
 let g:polyglot_disabled = ['json']
