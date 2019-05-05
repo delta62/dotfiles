@@ -1,0 +1,9 @@
+[Unit]
+Description=Remind users to update the system
+
+[Timer]
+OnCalendar=weekly
+Persistent=true
+
+[Install]
+WantedBy=timers.target
