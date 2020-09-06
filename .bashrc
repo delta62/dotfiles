@@ -5,11 +5,18 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# export TERM=xterm-256color
 [ -z "$TMUX" ] && { tmux attach || exec tmux new-session && exit; }
 
 set -o vi
+export EDITOR=vim
 
+shopt -s histappend
+export HISTCONTROL=ignoreboth:erasedups
+
+set -o ignoreeof
 alias ls='ls -lh --group-directories-first --color=auto'
+alias ya=yarn
 
 . /usr/share/git/completion/git-completion.bash
 . /usr/share/git/completion/git-prompt.sh
@@ -47,3 +54,5 @@ man() {
     command man "$@"
 }
 
+eval "$(nodenv init -)"
+export PATH="~/.yarn/bin:$PATH"
