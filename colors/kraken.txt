@@ -1,0 +1,18 @@
+Text: #EEEEEC
+Background: #011429
+Black: #000000
+Dark Grey: #444444
+Red: #E8092C
+Light Red: ##E8092C
+Green: #00CA6C
+Light Green: #00CA6C
+Brown/Yellow: #2AA198
+Yellow: #13D0C2
+Blue: #67A1B9
+Light Blue: #67A1B9
+Magenta: #E8092C
+Light Magenta: #E8092C
+Cyan: #2AA198
+Light Cyan: #13D0C2
+Light Grey: #C0C0C0
+White: #DEDEDE
