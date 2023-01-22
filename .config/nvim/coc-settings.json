@@ -1,0 +1,7 @@
+{
+  "rust-analyzer.procMacro.enable": true,
+  "coc.preferences.formatOnSave": true,
+  "codeLens.enable": false,
+  "Lua.diagnostics.globals": ["todo", "test", "skip", "new_cpu"],
+  "Lua.diagnostics.disable": ["lowercase-global"]
+}
