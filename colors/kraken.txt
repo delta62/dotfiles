@@ -1,9 +1,9 @@
-Text: #EEEEEC
+Text: #EEEEEE
 Background: #011429
 Black: #000000
 Dark Grey: #444444
 Red: #E8092C
-Light Red: ##E8092C
+Light Red: #E8092C
 Green: #00CA6C
 Light Green: #00CA6C
 Brown/Yellow: #2AA198
