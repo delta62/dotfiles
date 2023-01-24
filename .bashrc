@@ -1,25 +1,20 @@
-#
-# ~/.bashrc
-#
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# export TERM=xterm-256color
 [ -z "$TMUX" ] && { tmux attach || exec tmux new-session && exit; }
 
 set -o vi
+set -o ignoreeof
+shopt -s histappend
+
 export EDITOR=vim
 
-shopt -s histappend
-export HISTCONTROL=ignoreboth:erasedups
+HISTCONTROL=ignoreboth:erasedups
+npm_config_prefix="$HOME/.local"
 
-set -o ignoreeof
 alias ls='ls -lh --group-directories-first --color=auto'
 alias ya=yarn
-
-. /usr/share/git/completion/git-completion.bash
-. /usr/share/git/completion/git-prompt.sh
+alias pn=pnpm
 
 # PS1 prompt
 BLUE='\[\033[0;94m\]'
@@ -27,6 +22,11 @@ GREEN='\[\033[0;32m\]'
 YELLOW='\[\033[0;33m\]'
 NO_COLOR='\[\033[0;37m\]'
 PS1="${YELLOW}\w${NO_COLOR}${BLUE}\$(__git_ps1)${NO_COLOR}\n${GREEN}\W${NO_COLOR} ${YELLOW}#${NO_COLOR} "
+PATH="$HOME/.fly/bin:$HOME/.local/bin:$PATH"
+
+. "$HOME/.cargo/env"
+. /usr/share/git/completion/git-completion.bash
+. /usr/share/git/completion/git-prompt.sh
 
 # Git bindings
 delta62_git_alias() {
@@ -53,6 +53,3 @@ man() {
     LESS_TERMCAP_us=$'\e[01;32m' \
     command man "$@"
 }
-
-eval "$(nodenv init -)"
-export PATH="~/.yarn/bin:$PATH"

@@ -1,7 +1,10 @@
 [Unit]
 Description=System update reminder
 
+[Install]
+WantedBy=default.target
+
 [Service]
 Type=simple
 Environment="USER=sam"
-ExecStart=/usr/bin/notify-send "System Upgrade" "It's time to update your system packages!"
+ExecStart=/usr/bin/notify-send -t 0 "System Upgrade" "It's time to update your system packages!"
