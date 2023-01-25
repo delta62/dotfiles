@@ -2,7 +2,7 @@
 Description=System update reminder
 
 [Install]
-WantedBy=default.target
+WantedBy=timers.target
 
 [Service]
 Type=simple
