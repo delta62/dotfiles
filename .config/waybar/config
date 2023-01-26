@@ -4,12 +4,7 @@
   "spacing": 4,
   "modules-left": ["sway/workspaces", "sway/mode"],
   "modules-center": ["clock"],
-  "modules-right": [
-    "pulseaudio",
-    "network",
-    "battery",
-    "tray"
-  ],
+  "modules-right": ["pulseaudio", "network", "battery", "tray"],
   "sway/mode": {
     "format": "<span style=\"italic\">{}</span>"
   },
@@ -29,14 +24,14 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{capacity}% {icon}",
+    "format": "<span rise='4096'>{capacity}%</span>  <span font='20'>{icon}</span>",
     "format-charging": "{capacity}% ",
     "format-plugged": "{capacity}% ",
-    "format-alt": "{time} {icon}",
+    "format-alt": "<span rise='4096'>{time}</span>  <span font='20'>{icon}</span>",
     "format-icons": ["", "", "", "", ""]
   },
   "network": {
-    "format-wifi": "{essid} ",
+    "format-wifi": "<span rise='4096'>{essid}</span>  <span font='20'></span>",
     "format-ethernet": "{ipaddr}/{cidr} ",
     "tooltip-format": "{ifname} via {gwaddr} ",
     "format-linked": "{ifname} (No IP) ",
@@ -44,10 +39,8 @@
     "format-alt": "{ifname}: {ipaddr}/{cidr}"
   },
   "pulseaudio": {
-    "format": "{volume}% {icon}",
-    "format-bluetooth": "{volume}% {icon} {format_source}",
-    "format-bluetooth-muted": " {icon} {format_source}",
-    "format-muted": "0% ",
+    "format": "<span rise='4096'>{volume}%</span>  <span font='20'>{icon}</span>",
+    "format-muted": "<span rise='2048'>0%</span>  <span font='14'></span>",
     "format-source": "{volume}% ",
     "format-source-muted": "",
     "format-icons": {
@@ -62,3 +55,4 @@
     "on-click": "pavucontrol"
   }
 }
+// vi: ft=jsonc
