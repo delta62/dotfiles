@@ -7,9 +7,6 @@ set -o vi
 set -o ignoreeof
 shopt -s histappend
 
-export EDITOR=vim
-
-HISTCONTROL=ignoreboth:erasedups
 npm_config_prefix="$HOME/.local"
 
 alias ls='ls -lh --group-directories-first --color=auto'
@@ -22,11 +19,15 @@ GREEN='\[\033[0;32m\]'
 YELLOW='\[\033[0;33m\]'
 NO_COLOR='\[\033[0;37m\]'
 PS1="${YELLOW}\w${NO_COLOR}${BLUE}\$(__git_ps1)${NO_COLOR}\n${GREEN}\W${NO_COLOR} ${YELLOW}#${NO_COLOR} "
-PATH="$HOME/.fly/bin:$HOME/.local/bin:$PATH"
+PATH="$HOME/scripts:$HOME/.fly/bin:$HOME/.local/bin:$PATH"
+HISTCONTROL=ignoreboth:erasedups
+EDITOR=vim
 
 . "$HOME/.cargo/env"
 . /usr/share/git/completion/git-completion.bash
 . /usr/share/git/completion/git-prompt.sh
+. /usr/share/fzf/key-bindings.bash
+. /usr/share/fzf/completion.bash
 
 # Git bindings
 delta62_git_alias() {

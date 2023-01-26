@@ -7,7 +7,6 @@ set {
     $right l
 
     $term kitty
-    # $menu wofi --show drun | xargs swaymsg exec --
     $menu j4-dmenu-desktop \
         --dmenu='bemenu -i -H 30 -p "launch" --fn "pango:Source Code Pro 11" --tf "#67a1b9" --nf "#5c5c5c" --hf "#eeeeee" --hb "#232a36" --nb "#232a36" --fb "#232a36" --ab "#232a36" --tb "#232a36" --af "#5c5c5c"' \
         | xargs swaymsg exec --
@@ -39,10 +38,7 @@ bar swaybar_command waybar
 default_border none
 floating_modifier $mod normal
 
-gaps {
-    inner 2
-    outer 3
-}
+gaps inner 5
 
 input type:touchpad {
     accel_profile flat

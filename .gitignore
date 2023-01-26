@@ -1,5 +1,11 @@
 *
 
+!.bash_profile
+!.bashrc
+!.gitconfig
+!.gitignore
+!.tmux.conf
+
 !colors
 !colors/*
 
@@ -19,8 +25,5 @@
 
 .config/systemd/user/*.wants/
 
-!.bash_profile
-!.bashrc
-!.gitconfig
-!.gitignore
-!.tmux.conf
+!scripts
+!scripts/*
