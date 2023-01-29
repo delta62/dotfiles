@@ -4,7 +4,7 @@
   "spacing": 4,
   "modules-left": ["sway/workspaces", "sway/mode"],
   "modules-center": ["clock"],
-  "modules-right": ["pulseaudio", "network", "battery", "tray"],
+  "modules-right": ["pulseaudio", "battery", "network", "tray"],
   "sway/mode": {
     "format": "<span style=\"italic\">{}</span>"
   },
@@ -31,7 +31,7 @@
     "format-icons": ["", "", "", "", ""]
   },
   "network": {
-    "format-wifi": "<span rise='4096'>{essid}</span>  <span font='20'></span>",
+    "format-wifi": "{essid}",
     "format-ethernet": "{ipaddr}/{cidr} ",
     "tooltip-format": "{ifname} via {gwaddr} ",
     "format-linked": "{ifname} (No IP) ",
