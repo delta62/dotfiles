@@ -7,7 +7,7 @@ set -e
 GTK3_SETTINGS_PATH="$HOME/.config/gtk-3.0/settings.ini"
 
 function usage() {
-    echo >&2 "Usage: $0 <get | dark | light | toggle>"
+    echo >&2 "Usage: $0 <get | get_waybar | dark | light | toggle>"
 }
 
 # Gets the current color scheme preference, either prefer-light or prefer-dark
@@ -16,6 +16,12 @@ function get_color_scheme() {
     sed -e "s/^'//" \
         -e "s/'$//" \
         <<< $(gsettings get org.gnome.desktop.interface color-scheme)
+}
+
+# Return 1 if in dark mode, or 0 otherwise
+function is_dark_mode() {
+    CURRENT="$(gsettings get org.gnome.desktop.interface color-scheme)"
+    [ "$CURRENT" == "'prefer-dark'" ]
 }
 
 # Set the light/dark mode preference for both GTK 3 and 4
@@ -49,6 +55,10 @@ case "$1" in
     "get")
         echo "$(get_color_scheme)"
         ;;
+    "get_waybar")
+        if is_dark_mode; then echo ""; else echo ""; fi
+        exit 0
+        ;;
     "dark")
         set_color_scheme "prefer-dark"
         echo "$(get_color_scheme)"
@@ -58,8 +68,7 @@ case "$1" in
         echo "$(get_color_scheme)"
         ;;
     "toggle")
-        CURRENT="$(get_color_scheme)"
-        if [ "$CURRENT" == "prefer-dark" ]; then
+        if is_dark_mode; then
             set_color_scheme "prefer-light"
         else
             set_color_scheme "prefer-dark"

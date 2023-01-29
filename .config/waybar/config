@@ -4,13 +4,27 @@
   "spacing": 4,
   "modules-left": ["sway/workspaces", "sway/mode"],
   "modules-center": ["clock"],
-  "modules-right": ["pulseaudio", "battery", "network", "tray"],
+  "modules-right": [
+    "pulseaudio",
+    "battery",
+    "network",
+    "custom/dark_mode",
+    "tray"
+  ],
   "sway/mode": {
     "format": "<span style=\"italic\">{}</span>"
   },
   "tray": {
-    // "icon-size": 21,
     "spacing": 10
+  },
+  "custom/dark_mode": {
+    "exec": "~/scripts/dark_mode.sh get_waybar",
+    "exec-if": "sleep 0.5",
+    "exec-on-event": true,
+    "restart-interval": 5,
+    "format": "{}",
+    "on-click": "~/scripts/dark_mode.sh toggle",
+    "tooltip": false
   },
   "clock": {
     "timezone": "America/Los_Angeles",
@@ -25,8 +39,8 @@
       "critical": 15
     },
     "format": "<span rise='4096'>{capacity}%</span>  <span font='20'>{icon}</span>",
-    "format-charging": "{capacity}% ",
-    "format-plugged": "{capacity}% ",
+    "format-charging": "<span rise='4096'>{capacity}%</span> <span font='20'></span>",
+    "format-plugged": "<span rise='4096'>{capacity}%</span> <span font='20'></span>",
     "format-alt": "<span rise='4096'>{time}</span>  <span font='20'>{icon}</span>",
     "format-icons": ["", "", "", "", ""]
   },
