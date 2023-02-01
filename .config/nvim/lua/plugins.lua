@@ -2,10 +2,12 @@ return require('packer').startup(function(use)
   use 'airblade/vim-gitgutter'
   use { 'folke/tokyonight.nvim', branch = 'main' }
   use 'ianks/vim-tsx'
-  use 'junegunn/fzf'
   use 'junegunn/fzf.vim'
-  use 'kyazdani42/nvim-web-devicons'
-  use 'kyazdani42/nvim-tree.lua'
+  use 'mhinz/vim-startify'
+  use {
+      'nvim-tree/nvim-tree.lua',
+      requires = { 'nvim-tree/nvim-web-devicons' }
+  }
   use 'leafgarland/typescript-vim'
   use { 'neoclide/coc.nvim', branch = 'release'}
   use {

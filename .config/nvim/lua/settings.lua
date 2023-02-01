@@ -37,5 +37,8 @@ opt.termguicolors = true
 
 g.airline_powerline_fonts = 1
 g.airline_theme = 'simple'
+-- Disable netrw, use nvim-tree instead
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
 g.mapleader = ','
 g.tokyonight_style = 'night'
