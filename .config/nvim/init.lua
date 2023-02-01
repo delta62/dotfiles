@@ -1,0 +1,6 @@
+require 'plugins'
+require 'auto'
+require 'colors'
+require 'keys'
+require 'plugin_config'
+require 'settings'
