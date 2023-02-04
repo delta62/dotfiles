@@ -34,11 +34,12 @@ opt.matchpairs = opt.matchpairs + "<:>"
 opt.scrolloff = 3
 opt.signcolumn = "yes"
 opt.termguicolors = true
+opt.spell = true
 
 g.airline_powerline_fonts = 1
 g.airline_theme = 'simple'
+g.mapleader = ','
+
 -- Disable netrw, use nvim-tree instead
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
-g.mapleader = ','
-g.tokyonight_style = 'night'

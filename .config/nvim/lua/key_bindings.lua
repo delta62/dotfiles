@@ -26,8 +26,8 @@ map('n', '<Leader>c', ':e ~/.config/nvim/init.lua<CR>')
 map('n', '<C-t>', ':NvimTreeToggle<CR>')
 
 -- CoC
-map('n', '[g', '<Plug>(coc-diagnostics-prev)', { silent = true })
-map('n', ']g', '<Plug>(coc-diagnostics-next)', { silent = true })
+map('n', '[g', '<Plug>(coc-diagnostic-prev)', { silent = true })
+map('n', ']g', '<Plug>(coc-diagnostic-next)', { silent = true })
 map('n', 'gd', '<Plug>(coc-definition)', { silent = true })
 map('n', 'gy', '<Plug>(coc-type-definition)', { silent = true })
 map('n', 'gi', '<Plug>(coc-implementation)', { silent = true })
