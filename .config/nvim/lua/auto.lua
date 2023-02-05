@@ -28,13 +28,18 @@ augrp('coc', {
     { 'CursorHold', command = "silent call CocActionAsync('highlight')" },
 })
 
-augrp('rust', {
-    pattern = 'rust',
-    { 'FileType', command = "setlocal formatprg=cargo\\ fmt" },
+augrp('nvim_tree', {
+    pattern = 'NvimTree',
+    { 'FileType', command = "setlocal nospell" },
 })
 
 augrp('quickfix', {
     { 'FileType',  pattern = 'qf', command = 'setlocal wrap' },
+})
+
+augrp('rust', {
+    pattern = 'rust',
+    { 'FileType', command = "setlocal formatprg=cargo\\ fmt" },
 })
 
 augrp('typescript', {

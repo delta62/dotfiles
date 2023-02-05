@@ -26,6 +26,9 @@
 !.config/waybar/*
 
 .config/systemd/user/*.wants/
+.config/kitty/current-theme.conf
+.config/kitty/themes.conf
+.config/kitty/themes.conf.bak
 
 !scripts
 !scripts/*

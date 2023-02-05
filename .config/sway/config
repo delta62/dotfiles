@@ -57,6 +57,7 @@ bindsym {
     $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
     $mod+Return exec $term
     $mod+d exec $menu
+    $mod+Shift+d exec ~/scripts/dark_mode.sh toggle
 
     XF86MonBrightnessDown exec brightnessctl --min-value=1000 set 5%-
     XF86MonBrightnessUp exec brightnessctl set 5%+

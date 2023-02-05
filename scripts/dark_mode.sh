@@ -5,6 +5,7 @@
 set -e
 
 GTK3_SETTINGS_PATH="$HOME/.config/gtk-3.0/settings.ini"
+NVIM_COLORS_PATH=~/.config/nvim/lua/colors.lua
 
 function usage() {
     echo >&2 "Usage: $0 <get | get_waybar | dark | light | toggle>"
@@ -12,25 +13,28 @@ function usage() {
 
 # Gets the current color scheme preference, either prefer-light or prefer-dark
 function get_color_scheme() {
-    # gsettings quotes the value, remove the quotes here
-    sed -e "s/^'//" \
-        -e "s/'$//" \
-        <<< $(gsettings get org.gnome.desktop.interface color-scheme)
-}
-
-# Return 1 if in dark mode, or 0 otherwise
-function is_dark_mode() {
     CURRENT="$(gsettings get org.gnome.desktop.interface color-scheme)"
-    [ "$CURRENT" == "'prefer-dark'" ]
+    if [ "$CURRENT" == "'prefer-dark'" ]; then
+        echo "dark"
+    else
+        echo "light"
+    fi
 }
 
-# Set the light/dark mode preference for both GTK 3 and 4
+# Set the light/dark mode preference
 function set_color_scheme() {
-    # GTK 3
-    if [ "$1" == "prefer-dark" ]; then
+    if [ "$1" == "dark" ]; then
         GTK3_VALUE=true
+        GTK4_VALUE="prefer-dark"
+        KITTY_THEME="Ayu Mirage"
+        NVIM_FIND="light"
+        NVIM_REPLACE="mirage"
     else
         GTK3_VALUE=false
+        GTK4_VALUE="prefer-light"
+        KITTY_THEME="Ayu Light"
+        NVIM_FIND="mirage"
+        NVIM_REPLACE="light"
     fi
 
     if [ ! -f "$GTK3_SETTINGS_PATH" ]; then
@@ -38,12 +42,22 @@ function set_color_scheme() {
         exit 1
     fi
 
+    # GTK 3
     sed -Ei \
         "s/(gtk-application-prefer-dark-theme)\s*=\s*(.*)/\1 = $GTK3_VALUE/" \
         "$GTK3_SETTINGS_PATH"
 
     # GTK 4
-    gsettings set org.gnome.desktop.interface color-scheme "$1"
+    gsettings set org.gnome.desktop.interface color-scheme "$GTK4_VALUE"
+
+    # Neovim
+    sed -Ei \
+        "s/'$NVIM_FIND'/'$NVIM_REPLACE'/" \
+        "$NVIM_COLORS_PATH"
+    nvr -cc "luafile $NVIM_COLORS_PATH"
+
+    # Kitty
+    kitty +kitten themes --reload-in all --config-file-name themes.conf "$KITTY_THEME"
 }
 
 if [ $# -ne 1 ]; then
@@ -53,27 +67,23 @@ fi
 
 case "$1" in
     "get")
-        echo "$(get_color_scheme)"
+        get_color_scheme
         ;;
     "get_waybar")
-        if is_dark_mode; then echo ""; else echo ""; fi
-        exit 0
+        if [ $(get_color_scheme) == "dark" ]; then echo ""; else echo ""; fi
         ;;
     "dark")
-        set_color_scheme "prefer-dark"
-        echo "$(get_color_scheme)"
+        set_color_scheme "dark"
         ;;
     "light")
-        set_color_scheme "prefer-light"
-        echo "$(get_color_scheme)"
+        set_color_scheme "light"
         ;;
     "toggle")
-        if is_dark_mode; then
-            set_color_scheme "prefer-light"
+        if [ $(get_color_scheme) == "dark" ]; then
+            set_color_scheme "light"
         else
-            set_color_scheme "prefer-dark"
+            set_color_scheme "dark"
         fi
-        echo "$(get_color_scheme)"
         ;;
     "-h" | "--help")
         usage
