@@ -121,3 +121,11 @@ label:focus {
   -gtk-icon-effect: highlight;
   background-color: #eb4d4b;
 }
+
+.dark {
+  color: #e0bb4e;
+}
+
+.light {
+  color: #e0bb4e;
+}

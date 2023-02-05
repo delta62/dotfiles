@@ -70,7 +70,15 @@ case "$1" in
         get_color_scheme
         ;;
     "get_waybar")
-        if [ $(get_color_scheme) == "dark" ]; then echo ""; else echo ""; fi
+        if [ $(get_color_scheme) == "dark" ]; then
+            cat <<- EOF
+{"text":"","tooltip":"Switch to light mode","class":"dark"}
+EOF
+        else
+            cat <<- EOF
+{"text":"","tooltip":"Switch to dark mode","class":"light"}
+EOF
+        fi
         ;;
     "dark")
         set_color_scheme "dark"

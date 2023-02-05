@@ -1,6 +1,6 @@
 {
   "position": "top",
-  "height": 30,
+  "height": 35,
   "spacing": 4,
   "modules-left": ["sway/workspaces", "sway/mode"],
   "modules-center": ["clock"],
@@ -21,10 +21,10 @@
     "exec": "~/scripts/dark_mode.sh get_waybar",
     "exec-if": "sleep 0.5",
     "exec-on-event": true,
-    "restart-interval": 5,
+    "restart-interval": 1,
     "format": "{}",
     "on-click": "~/scripts/dark_mode.sh toggle",
-    "tooltip": false
+    "return-type": "json"
   },
   "clock": {
     "timezone": "America/Los_Angeles",
