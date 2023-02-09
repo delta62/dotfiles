@@ -23,4 +23,5 @@ return require('packer').startup(function(use)
   use 'tpope/vim-fugitive'
   use 'vim-airline/vim-airline'
   use 'vim-airline/vim-airline-themes'
+  use 'mustache/vim-mustache-handlebars'
 end)

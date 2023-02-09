@@ -24,6 +24,7 @@ map('n', '<Leader>q', ':bp<bar>sp<bar>bn<bar>bd<CR>')
 map('n', '<Enter>', 'o<Esc>^$')
 map('n', '<Leader>c', ':e ~/.config/nvim/init.lua<CR>')
 map('n', '<C-t>', ':NvimTreeToggle<CR>')
+map('n', '<leader>t', ':r!date -Iseconds<CR>')
 
 -- CoC
 map('n', '[g', '<Plug>(coc-diagnostic-prev)', { silent = true })

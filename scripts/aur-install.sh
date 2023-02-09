@@ -11,13 +11,12 @@ if [ -z "$1" ]; then
     usage
 fi
 
-cd ~/Downloads
-
 PACKAGE="$1"
 PKG_FILE="$PACKAGE.tar.gz"
 PKG_URL="https://aur.archlinux.org/cgit/aur.git/snapshot/$PKG_FILE"
 
 echo "Downloading $PKG_FILE..."
+cd ~/Downloads
 curl --fail --remote-name "$PKG_URL"
 
 echo "Extracting..."
