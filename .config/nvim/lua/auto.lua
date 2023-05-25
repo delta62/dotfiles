@@ -28,6 +28,11 @@ augrp('coc', {
     { 'CursorHold', command = "silent call CocActionAsync('highlight')" },
 })
 
+augrp('markdown', {
+    pattern = 'markdown',
+    { 'FileType', command = 'setlocal tw=80 cc=+1' },
+})
+
 augrp('nvim_tree', {
     pattern = 'NvimTree',
     { 'FileType', command = "setlocal nospell" },
@@ -35,6 +40,10 @@ augrp('nvim_tree', {
 
 augrp('quickfix', {
     { 'FileType',  pattern = 'qf', command = 'setlocal wrap' },
+})
+
+augrp('pug', {
+    { 'FileType', pattern = 'pug', command = 'setlocal sw=2 sts=2' },
 })
 
 augrp('rust', {
@@ -46,4 +55,10 @@ augrp('typescript', {
     pattern = 'typescript*',
     { 'FileType', command = 'setlocal cc=81 tw=80 sts=2 sw=2 fex&' },
     { 'FileType', command = 'setlocal formatprg=prettier\\ --parser\\ typescript' },
+})
+
+augrp('javascript', {
+    pattern = 'javascript',
+    { 'FileType', command = 'setlocal cc=81 tw=80 sts=2 sw=2 fex&' },
+    { 'FileType', command = 'setlocal formatprg=prettier' },
 })

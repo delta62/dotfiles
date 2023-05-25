@@ -34,7 +34,8 @@ opt.matchpairs = opt.matchpairs + "<:>"
 opt.scrolloff = 3
 opt.signcolumn = "yes"
 opt.termguicolors = true
-opt.spell = true
+opt.spell = false
+opt.spelloptions = "camel"
 
 g.airline_powerline_fonts = 1
 g.airline_theme = 'simple'

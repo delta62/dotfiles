@@ -1,5 +1,6 @@
 return require('packer').startup(function(use)
   use 'airblade/vim-gitgutter'
+  use 'digitaltoad/vim-pug'
   use 'Luxed/ayu-vim'
   use { 'folke/tokyonight.nvim', branch = 'main' }
   use 'ianks/vim-tsx'
