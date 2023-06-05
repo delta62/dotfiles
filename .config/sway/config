@@ -21,6 +21,11 @@ assign {
     [class="thunderbird"] workspace 4
 }
 
+for_window {
+    [app_id="thunar" title="^File Operation.*"] floating enable
+    [class="thunderbird" instance="Msgcompose"] floating enable
+}
+
 exec {
     dunst
     nm-applet --indicator
