@@ -18,7 +18,8 @@ assign {
     [app_id="kitty"] workspace 1
     [class="firefox"] workspace 2
     [class="discord"] workspace 3
-    [class="thunderbird"] workspace 4
+    [app_id="thunar"] workspace 4
+    [class="thunderbird"] workspace 10
 }
 
 for_window {
