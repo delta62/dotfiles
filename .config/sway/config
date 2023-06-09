@@ -6,6 +6,10 @@ set {
     $up k
     $right l
 
+    $laptop eDP-1
+    $external_left "LG Electronics LG Ultra HD 0x00007D91"
+    $external_right "LG Electronics LG Ultra HD 0x0000FE23"
+
     $term kitty
     $menu j4-dmenu-desktop \
         --dmenu='bemenu -i -H 30 -p "launch" --fn "pango:Source Code Pro 11" --tf "#67a1b9" --nf "#5c5c5c" --hf "#eeeeee" --hb "#232a36" --nb "#232a36" --fb "#232a36" --ab "#232a36" --tb "#232a36" --af "#5c5c5c"' \
@@ -47,10 +51,42 @@ floating_modifier $mod normal
 
 gaps inner 5
 
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
+
+output $laptop {
+    res 1920x1200@59.950Hz
+    position 0 0
+}
+
+output $external_left {
+    res 1920x1080@60Hz
+    position 0 1200
+}
+
+output $external_right {
+    res 1920x1080@60Hz
+    position 1920 1200
+}
+
 input type:touchpad {
     accel_profile flat
     dwt enabled
     tap enabled
+}
+
+workspace {
+    1 output $laptop $external_left
+    3 output $laptop $external_left
+    5 output $laptop $external_left
+    7 output $laptop $external_left
+    9 output $laptop $external_left
+
+    2 output $laptop $external_right
+    4 output $laptop $external_right
+    6 output $laptop $external_right
+    8 output $laptop $external_right
+    10 output $laptop $external_right
 }
 
 bindgesture {
