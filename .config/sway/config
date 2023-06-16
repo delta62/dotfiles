@@ -29,6 +29,7 @@ assign {
 for_window {
     [app_id="thunar" title="^File Operation.*"] floating enable
     [class="thunderbird" instance="Msgcompose"] floating enable
+    [title="Me window"] floating enable
 }
 
 exec {
@@ -49,24 +50,24 @@ bar swaybar_command waybar
 default_border none
 floating_modifier $mod normal
 
-gaps inner 5
+gaps inner 2
 
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 
 output $laptop {
-    res 1920x1200@59.950Hz
-    position 0 0
+    mode 1920x1200@59.950Hz
+    position 0 1080
 }
 
 output $external_left {
-    res 1920x1080@60Hz
-    position 0 1200
+    mode 1920x1080@60Hz
+    position 0 0
 }
 
 output $external_right {
-    res 1920x1080@60Hz
-    position 1920 1200
+    mode 1920x1080@60Hz
+    position 1920 0
 }
 
 input type:touchpad {
@@ -76,17 +77,17 @@ input type:touchpad {
 }
 
 workspace {
-    1 output $laptop $external_left
+    1 output $external_left $laptop
     3 output $laptop $external_left
-    5 output $laptop $external_left
-    7 output $laptop $external_left
-    9 output $laptop $external_left
+    5 output $external_left $laptop
+    7 output $external_left $laptop
+    9 output $external_left $laptop
 
-    2 output $laptop $external_right
-    4 output $laptop $external_right
-    6 output $laptop $external_right
-    8 output $laptop $external_right
-    10 output $laptop $external_right
+    2 output $external_right $laptop
+    4 output $external_right $laptop
+    6 output $external_right $laptop
+    8 output $external_right $laptop
+    10 output $external_right $laptop
 }
 
 bindgesture {

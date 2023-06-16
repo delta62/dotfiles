@@ -20,6 +20,7 @@ return require('packer').startup(function(use)
       end
   }
   use 'rust-lang/rust.vim'
+  use 'tikhomirov/vim-glsl'
   use 'tpope/vim-commentary'
   use 'tpope/vim-fugitive'
   use 'vim-airline/vim-airline'

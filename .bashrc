@@ -1,7 +1,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-[ -z "$TMUX" ] && { tmux attach || exec tmux new-session && exit; }
+# [ -z "$TMUX" ] && { tmux attach || exec tmux new-session && exit; }
 
 set -o vi
 set -o ignoreeof
@@ -13,6 +13,7 @@ alias ls='ls -lh --group-directories-first --color=auto'
 alias ya=yarn
 alias pn=pnpm
 alias vim="nvim --listen /tmp/nvimsocket"
+alias b2="backblaze-b2"
 
 # PS1 prompt
 BLUE='\[\033[0;94m\]'
