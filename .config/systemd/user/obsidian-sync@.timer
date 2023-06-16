@@ -1,0 +1,10 @@
+[Unit]
+Description=Synchronize an obisidian notebook with the cloud regularly
+
+[Timer]
+AccuracySec=360
+OnCalendar=hourly
+# Unit=obisidian-sync@%i.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,10 @@
+[Unit]
+Description=Sync Obsidian Journal with the cloud
+
+[Install]
+WantedBy=timers.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/backblaze-b2 sync "%h/Documents/obsidian/%i" "b2://%i"
+ExecStart=/usr/bin/backblaze-b2 sync "b2://%i" "%h/Documents/obsidian/%i"
