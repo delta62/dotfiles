@@ -54,7 +54,7 @@
   },
   "pulseaudio": {
     "format": "<span rise='4096'>{volume}%</span>  <span font='20'>{icon}</span>",
-    "format-muted": "<span rise='2048'>0%</span>  <span font='14'></span>",
+    "format-muted": "<span font='14'></span>",
     "format-source": "{volume}% ",
     "format-source-muted": "",
     "format-icons": {

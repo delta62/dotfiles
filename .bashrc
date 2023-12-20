@@ -1,7 +1,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# [ -z "$TMUX" ] && { tmux attach || exec tmux new-session && exit; }
+[ -z "$TMUX" ] && { tmux attach || exec tmux new-session && exit; }
 
 set -o vi
 set -o ignoreeof
@@ -21,7 +21,9 @@ GREEN='\[\033[0;32m\]'
 YELLOW='\[\033[0;33m\]'
 NO_COLOR='\[\033[0;39m\]'
 PS1="${YELLOW}\w${NO_COLOR}${BLUE}\$(__git_ps1)${NO_COLOR}\n${GREEN}\W${NO_COLOR} ${YELLOW}#${NO_COLOR} "
-PATH="$HOME/scripts:$HOME/.fly/bin:$HOME/.local/bin:$PATH"
+
+export GEM_HOME="$(gem env user_gemhome)"
+PATH="$HOME/scripts:$HOME/.fly/bin:$HOME/.local/bin:$PATH:$GEM_HOME/bin"
 HISTCONTROL=ignoreboth:erasedups
 EDITOR=vim
 

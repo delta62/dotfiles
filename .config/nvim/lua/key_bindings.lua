@@ -26,6 +26,9 @@ map('n', '<Leader>c', ':e ~/.config/nvim/init.lua<CR>')
 map('n', '<C-t>', ':NvimTreeToggle<CR>')
 map('n', '<leader>t', ':r!date -Iseconds<CR>')
 
+-- Ledger
+map('n', '<C-n>', ':call ledger#entry()<CR>')
+
 -- CoC
 map('n', '[g', '<Plug>(coc-diagnostic-prev)', { silent = true })
 map('n', ']g', '<Plug>(coc-diagnostic-next)', { silent = true })

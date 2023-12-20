@@ -1,4 +1,4 @@
-. "$HOME/.cargo/env"
+export MOZ_ENABLE_WAYLAND=1
 export XDG_PICTURES_DIR=~/Pictures
 
 # If running from tty1 start sway

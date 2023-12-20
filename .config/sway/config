@@ -29,7 +29,8 @@ assign {
 for_window {
     [app_id="thunar" title="^File Operation.*"] floating enable
     [class="thunderbird" instance="Msgcompose"] floating enable
-    [title="Me window"] floating enable
+    [title="Nine Mages"] floating enable
+    [app_id="org.gnome.Calculator"] floating enable
 }
 
 exec {
@@ -55,20 +56,20 @@ gaps inner 2
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 
-output $laptop {
-    mode 1920x1200@59.950Hz
-    position 0 1080
-}
-
-output $external_left {
-    mode 1920x1080@60Hz
-    position 0 0
-}
-
-output $external_right {
-    mode 1920x1080@60Hz
-    position 1920 0
-}
+# output $laptop {
+#     mode 1920x1200@59.950Hz
+#     position 0 1080
+# }
+#
+# output $external_left {
+#     mode 1920x1080@60Hz
+#     position 0 0
+# }
+#
+# output $external_right {
+#     mode 1920x1080@60Hz
+#     position 1920 0
+# }
 
 input type:touchpad {
     accel_profile flat

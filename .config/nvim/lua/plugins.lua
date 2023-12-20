@@ -5,12 +5,14 @@ return require('packer').startup(function(use)
   use { 'folke/tokyonight.nvim', branch = 'main' }
   use 'ianks/vim-tsx'
   use 'junegunn/fzf.vim'
+  -- use 'mattn/emmet-vim'
   use 'mhinz/vim-startify'
   use {
       'nvim-tree/nvim-tree.lua',
       requires = { 'nvim-tree/nvim-web-devicons' }
   }
   use 'leafgarland/typescript-vim'
+  use 'ledger/vim-ledger'
   use { 'neoclide/coc.nvim', branch = 'release'}
   use {
       'nvim-treesitter/nvim-treesitter',

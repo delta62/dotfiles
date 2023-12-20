@@ -10,7 +10,7 @@ if [ $# -lt 1 ] || [ $# -gt 2 ]; then
 fi
 
 OPTIONS="$(<$1)"
-printf -v OPTIONS "$OPTIONS\n<SKIP>"
+printf -v OPTIONS "%s\n>>>" "$OPTIONS"
 START_FROM="${2}"
 
 for FILE in *; do
@@ -19,15 +19,29 @@ for FILE in *; do
     fi
 
     BASENAME="$(basename "$FILE")"
-    BASENAME="${BASENAME%.*}"
+    STEM="${BASENAME%.*}"
+
+    if grep -qFx "$STEM" "$1"; then
+        continue
+    fi
+
+    HEADER=$(echo "$STEM" | sed -r 's/^[[:digit:]]+ - //')
+    QUERY=$(echo "$HEADER" \
+        | sed -r 's/^[[:digit:]]+ - //' \
+        | sed -r 's/ \(M[[:digit:]]+\)//' \
+        | sed -r 's/ \(U\)/ (USA)/' \
+        | sed -r 's/ \(J\)/ (Japan)/' \
+        | sed -r 's/ \(E\)/ (Europe)/' \
+        | sed -r 's/ \(UE\)/ (USA, Europe)/')
+
     if [ -d "$FILE" ]; then
         EXTNAME=""
     else
         EXTNAME=".${FILE##*.}"
     fi
-    RENAME_TO=$(echo "$OPTIONS" | fzf --height 40% -i --header "$BASENAME" --query "$BASENAME" --bind 'ctrl-d:clear-query')
+    RENAME_TO=$(echo "$OPTIONS" | fzf --height 40% -i --header "$HEADER" --query "$QUERY" --bind 'ctrl-d:clear-query')
 
-    if [[ "$RENAME_TO" = "<SKIP>" ]]; then
+    if [[ "$RENAME_TO" = ">>>" ]]; then
         echo "Skipping $FILE"
         continue
     fi

@@ -42,8 +42,18 @@ augrp('quickfix', {
     { 'FileType',  pattern = 'qf', command = 'setlocal wrap' },
 })
 
+augrp('ledger', {
+    pattern = '*.ledger',
+    { 'FileType', command = 'setlocal sw=2 sts=2' },
+    { 'BufWritePre', command = ':LedgerAlignBuffer' }
+})
+
 augrp('pug', {
     { 'FileType', pattern = 'pug', command = 'setlocal sw=2 sts=2' },
+})
+
+augrp('ruby', {
+    { 'FileType', pattern = 'Guardfile', command = 'setlocal syntax ruby' }
 })
 
 augrp('rust', {

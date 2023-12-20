@@ -6,7 +6,7 @@ opt.re = 0
 opt.backup = false
 opt.writebackup = false
 
-opt.updatetime = 300
+-- opt.updatetime = 300
 
 opt.expandtab = true
 opt.tabstop = 4
@@ -40,6 +40,9 @@ opt.spelloptions = "camel"
 g.airline_powerline_fonts = 1
 g.airline_theme = 'simple'
 g.mapleader = ','
+
+g.ledger_default_commodity = '$'
+g.ledger_date_format = '%Y-%m-%d'
 
 -- Disable netrw, use nvim-tree instead
 g.loaded_netrw = 1
