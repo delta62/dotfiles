@@ -8,6 +8,7 @@
     "pulseaudio",
     "battery",
     "network",
+    "idle_inhibitor",
     "custom/dark_mode",
     "tray"
   ],
@@ -25,6 +26,16 @@
     "format": "{}",
     "on-click": "~/scripts/dark_mode.sh toggle",
     "return-type": "json"
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    },
+    "tooltip-format-activated": "Click to enable system idle",
+    "tooltip-format-deactivated": "Click to disable system idle for 2 hours",
+    "timeout": 120
   },
   "clock": {
     "timezone": "America/Los_Angeles",

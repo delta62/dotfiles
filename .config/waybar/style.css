@@ -113,6 +113,10 @@ button:hover {
   animation-direction: alternate;
 }
 
+#idle_inhibitor.activated {
+  color: #e0bb4e;
+}
+
 label:focus {
   background-color: #000000;
 }
