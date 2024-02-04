@@ -12,7 +12,6 @@ return require('packer').startup(function(use)
       requires = { 'nvim-tree/nvim-web-devicons' }
   }
   use 'leafgarland/typescript-vim'
-  use 'ledger/vim-ledger'
   use { 'neoclide/coc.nvim', branch = 'release'}
   use {
       'nvim-treesitter/nvim-treesitter',
