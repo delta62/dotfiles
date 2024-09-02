@@ -15,20 +15,21 @@
 !.config/kitty
 !.config/kitty/*
 !.config/nvim
-!.config/nvim/*
+!.config/nvim/**/*
 !.config/nvim/lua
 !.config/nvim/lua/*
 !.config/sway
 !.config/sway/*
 !.config/systemd
 !.config/systemd/**/*
+!.config/tmux
+!.config/tmux/**/*
 !.config/waybar
 !.config/waybar/*
 
 .config/systemd/user/*.wants/
 .config/kitty/current-theme.conf
 .config/kitty/themes.conf
-.config/kitty/themes.conf.bak
 
 !scripts
 !scripts/*

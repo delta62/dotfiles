@@ -51,10 +51,7 @@ function set_color_scheme() {
     gsettings set org.gnome.desktop.interface color-scheme "$GTK4_VALUE"
 
     # Neovim
-    # sed -Ei \
-    #     "s/'$NVIM_FIND'/'$NVIM_REPLACE'/" \
-    #     "$NVIM_COLORS_PATH"
-    # nvr -cc "luafile $NVIM_COLORS_PATH"
+    killall -USR1 nvim
 
     # Kitty
     kitty +kitten themes --reload-in all --config-file-name themes.conf "$KITTY_THEME"

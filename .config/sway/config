@@ -7,8 +7,7 @@ set {
     $right l
 
     $laptop eDP-1
-    $external_left "LG Electronics LG Ultra HD 0x00007D91"
-    $external_right "LG Electronics LG Ultra HD 0x0000FE23"
+    $home_desk "Dell Inc. DELL U2723QE HHS6FP3"
 
     $term kitty
     $menu j4-dmenu-desktop \
@@ -23,14 +22,14 @@ assign {
     [class="firefox"] workspace 2
     [class="discord"] workspace 3
     [app_id="thunar"] workspace 4
-    [class="thunderbird"] workspace 10
 }
 
 for_window {
     [app_id="thunar" title="^File Operation.*"] floating enable
-    [class="thunderbird" instance="Msgcompose"] floating enable
     [title="Nine Mages"] floating enable
     [app_id="org.gnome.Calculator"] floating enable
+    [class="fceux"] floating enable
+    [title="^Playdate Console$"] floating enable
 }
 
 exec {
@@ -39,7 +38,6 @@ exec {
     firefox
     kitty
     discord
-    thunderbird
     swayidle \
         timeout 300 'swaylock -f -c 333333' \
         timeout 305 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
@@ -51,25 +49,19 @@ bar swaybar_command waybar
 default_border none
 floating_modifier $mod normal
 
-gaps inner 2
-
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 
-# output $laptop {
-#     mode 1920x1200@59.950Hz
-#     position 0 1080
-# }
-#
-# output $external_left {
-#     mode 1920x1080@60Hz
-#     position 0 0
-# }
-#
-# output $external_right {
-#     mode 1920x1080@60Hz
-#     position 1920 0
-# }
+output $laptop {
+    mode 1920x1200@59.950Hz
+    position 2560 0
+}
+
+output $home_desk {
+    mode 3840x2160@59.997Hz
+    position 0 0
+    scale 1.5
+}
 
 input type:touchpad {
     accel_profile flat
@@ -78,17 +70,10 @@ input type:touchpad {
 }
 
 workspace {
-    1 output $external_left $laptop
-    3 output $laptop $external_left
-    5 output $external_left $laptop
-    7 output $external_left $laptop
-    9 output $external_left $laptop
-
-    2 output $external_right $laptop
-    4 output $external_right $laptop
-    6 output $external_right $laptop
-    8 output $external_right $laptop
-    10 output $external_right $laptop
+    1 output $home_desk $laptop
+    2 output $home_desk $laptop
+    3 output $laptop $home_desk
+    4 output $home_desk $laptop
 }
 
 bindgesture {

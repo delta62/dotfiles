@@ -137,3 +137,24 @@ label:focus {
 .light {
   color: #e0bb4e;
 }
+
+.bluetooth-off {
+  color: #eeeeee;
+  font-size: 18px;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+.bluetooth-discoverable {
+  color: #00ca6c;
+  font-size: 18px;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+.bluetooth-connected {
+  color: #49abed;
+  font-size: 18px;
+  padding-left: 2px;
+  padding-right: 2px;
+}

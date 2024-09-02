@@ -1,7 +1,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-[ -z "$TMUX" ] && { tmux attach || exec tmux new-session && exit; }
+[ "$TERM_PROGRAM" != "vscode" ] && [ -z "$TMUX" ] && { tmux attach || exec tmux new-session && exit; }
 
 set -o vi
 set -o ignoreeof
@@ -15,19 +15,17 @@ alias pn=pnpm
 alias vim="nvim --listen /tmp/nvimsocket"
 alias b2="backblaze-b2"
 
-# PS1 prompt
 BLUE='\[\033[0;94m\]'
-GREEN='\[\033[0;32m\]'
 YELLOW='\[\033[0;33m\]'
 NO_COLOR='\[\033[0;39m\]'
-PS1="${YELLOW}\w${NO_COLOR}${BLUE}\$(__git_ps1)${NO_COLOR}\n${GREEN}\W${NO_COLOR} ${YELLOW}#${NO_COLOR} "
+PS1="${YELLOW}\w${BLUE}\$(__git_ps1) ${YELLOW}#${NO_COLOR} "
 
-export GEM_HOME="$(gem env user_gemhome)"
 PATH="$HOME/scripts:$HOME/.local/bin:$PATH:$GEM_HOME/bin"
 HISTCONTROL=ignoreboth:erasedups
 EDITOR=vim
 
 . "$HOME/.cargo/env"
+. /usr/share/bash-completion/bash_completion
 . /usr/share/git/completion/git-completion.bash
 . /usr/share/git/completion/git-prompt.sh
 . /usr/share/fzf/key-bindings.bash
@@ -58,11 +56,3 @@ man() {
     LESS_TERMCAP_us=$'\e[01;32m' \
     command man "$@"
 }
-
-# pnpm
-export PNPM_HOME="/home/sam/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end

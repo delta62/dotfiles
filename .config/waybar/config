@@ -7,9 +7,9 @@
   "modules-right": [
     "pulseaudio",
     "battery",
-    "network",
     "idle_inhibitor",
     "custom/dark_mode",
+    "custom/earbuds",
     "tray"
   ],
   "sway/mode": {
@@ -25,6 +25,15 @@
     "restart-interval": 1,
     "format": "{}",
     "on-click": "~/scripts/dark_mode.sh toggle",
+    "return-type": "json"
+  },
+  "custom/earbuds": {
+    "exec": "~/scripts/bluetooth.sh get_waybar",
+    "exec-if": "sleep 0.5",
+    "exec-on-event": true,
+    "restart-interval": 1,
+    "format": "{}",
+    "on-click": "~/scripts/bluetooth.sh enable",
     "return-type": "json"
   },
   "idle_inhibitor": {
@@ -85,8 +94,8 @@
       "1": "",
       "2": "",
       "3": "",
-      "4": "",
-      "5": "",
+      "4": "🖹",
+      "5": "",
       "10": ""
     }
   }
